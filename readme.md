@@ -1,0 +1,1 @@
+- first at the moment will be a key value store project to learn go

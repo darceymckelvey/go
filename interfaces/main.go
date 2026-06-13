@@ -1,22 +1,38 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 )
 
-// decode is a function that takes a byte slice as an argument
-// and returns an error
-func decode(b []byte) error {
+/*
+/ 1 byte = 8 bits of information, so a byte slice can represent a sequence of bytes,
+/ which can be used to store data such as text, images, or other types of information.
+/ The decode function is intended to process the byte slice
+/ and extract meaningful information from it,
+/ but in this implementation, it simply returns nil,
+/ indicating that no error occurred during the decoding process.
+*/
+func decode(_ []byte) error {
 	return nil
 }
 
 func DecodeReader(r io.Reader) error {
-	return nil
+	// read all data from the reader and pass to decode
+	b, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
+	return decode(b)
 }
 
 // entry point of the program
 func main() {
+
+	data := []byte("Hello, World!")
+
+	DecodeReader(bytes.NewReader(data))
 	// io.Reader
 	// io.Writer
 
